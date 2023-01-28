@@ -1,0 +1,42 @@
+{
+    "env": {
+      "node": true,
+      "browser": true,
+      "es2022": true
+    },
+    "parser": "@typescript-eslint/parser",
+    "extends": [
+      "plugin:@typescript-eslint/recommended"
+    ],
+    "parserOptions": {
+      "ecmaVersion": 2022,
+      "sourceType": "module",
+      "project": [
+        "./tsconfig.json"
+      ]
+    },
+    "plugins": [
+      "@typescript-eslint"
+    ],
+    "ignorePatterns": ["src/solutions/2022/day0.ts"], 
+    "rules": {
+      "@typescript-eslint/no-namespace": "off",
+      "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/ban-types": [
+        "error",
+        {
+          "types": {
+            "String": false,
+            "Boolean": false,
+            "Number": false,
+            "Symbol": false,
+            "{}": false,
+            "Object": false,
+            "object": false,
+            "Function": false
+          },
+          "extendDefaults": true
+        }
+      ]
+    }
+  }

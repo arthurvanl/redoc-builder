@@ -1,0 +1,308 @@
+{
+    "openapi": "3.0.3",
+    "info": {
+        "title": "Winstore Images",
+        "version": "1.0.0",
+        "description": "Winstore Images API is an API (Application Programming Interface) for managing aca images.",
+        "x-logo": {
+            "url": "https://mintycloud.nl/uploads/mintyhosting-wit.png",
+            "backgroundColor": "#FFFFFF",
+            "altText": "Winstore Image API"
+        }
+    },
+    "servers": [
+        {
+            "url": "http://winstore-image.v150.mintyserver.nl",
+            "description": "A powerful API!",
+            "variables": {}
+        }
+    ],
+    "security": [ {"Basic": []} ],
+    "paths": {
+        "/images": {
+            "post": {
+                "tags": [
+                    "Images"
+                ],
+                "summary": "Get found images",
+                "operationId": "get-images",
+                "description": "Get found images by a specific ftp user.",
+                "requestBody": {
+                    "required": true,
+                    "description": "Request body for getting images.",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/requests/image/post"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "$ref": "#/components/responses/image/post"
+                    },
+                    "400": {
+                        "$ref": "#/components/responses/BadRequestError"
+                    }
+                }
+            }
+        },
+        "/ftp": {
+            "get": {
+                "tags": ["FtpUsers"],
+                "summary": "Get ftp users",
+                "operationId": "get-ftpusers",
+                "description": "Get an array of ftp users.",
+                "responses": {
+                    "200": {
+                        "$ref": "#/components/responses/ftp/get"
+                    }
+                }
+            },
+            "post": {
+                "tags": ["FtpUsers"],
+                "summary": "Create ftp user",
+                "operationId": "create-ftpuser",
+                "description": "Create a new ftp user.",
+                "requestBody": {
+                    "required": true,
+                    "description": "Request body for creating new ftp user.",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/requests/ftp/post"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "$ref": "#/components/responses/ftp/post"
+                    },
+                    "400": {
+                        "$ref": "#/components/responses/BadRequestError"
+                    }
+                }
+            },
+            "delete": {
+                "tags": ["FtpUsers"],
+                "summary": "Delete ftp user",
+                "operationId": "delete-ftpuser",
+                "description": "Delete an existing ftp user.",
+                "parameters": [
+                    {
+                        "name": "username",
+                        "in": "path",
+                        "description": "The ftp username",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "example": "Kindercompagnie"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/components/responses/ftp/delete"
+                    },
+                    "400": {
+                        "$ref": "#/components/responses/BadRequestError"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "Basic": {
+                "type": "apiKey",
+                "description": "Use the API key that has been set in the .env file",
+                "name": "Authorization",
+                "in": "header",
+                "x-linkTo": "tag/Authentication"
+            }
+        },
+        "schemas": {
+            "Image": {
+                "type": "string",
+                "example": "0443434"
+            },
+            "FtpUser": {
+                "type": "string",
+                "example": "Kindercompagnie"
+            },
+            "Success": {
+                "type": "object",
+                "properties": {
+                    "message": {
+                        "type": "string",
+                        "description": "Success message",
+                        "example": "Some success message that will pop up."
+                    }
+                },
+                "required": [
+                    "message"
+                ]
+            },
+            "Error": {
+                "type": "object",
+                "properties": {
+                    "message": {
+                        "type": "string",
+                        "description": "Error message",
+                        "example": "Some error message that will pop up."
+                    }
+                },
+                "required": [
+                    "message"
+                ]
+            }
+        },
+        "requests": {
+            "image": {
+                "post": {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "string",
+                            "description": "Image name",
+                            "example": "044003"
+                        },
+                        "user": {
+                            "type": "string",
+                            "description": "Image ftp user",
+                            "example": "Kindercompagnie"
+                        },
+                        "file_type": {
+                            "type": "string",
+                            "description": "Image type"
+                        }
+                    },
+                    "required": ["id", "user"]
+                }
+            },
+            "ftp": {
+                "post": {
+                    "properties": {
+                        "username": {
+                            "type": "string",
+                            "description": "Ftp username",
+                            "example": "Kindercompagnie"
+                        }
+                    }
+                }
+            }
+        },
+        "responses": {
+            "image": {
+                "post": {
+                    "description": "Ok: Successfully processed the request.",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/Image"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "BadRequestError": {
+                "description": "Bad request: The sent request does not meet the API specification. Please check the error message for more information.",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/Error"
+                        }
+                    }
+                }
+            },
+            "ftp": {
+                "get": {
+                    "description": "Ok: Successfully processed the request.",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/FtpUser"
+                                }
+                            }
+                        }
+                    }
+                },
+                "post": {
+                    "description": "Ok: Successfully processed the request.",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Success"
+                            },
+                            "example": {
+                                "message": "FTP User created!"
+                            }
+                        }
+                    }
+                },
+                "delete": {
+                    "description":"Ok: Successfully processed the request.",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Success"
+                            },
+                            "example": {
+                                "message": "FTP User deleted!"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "WhatIsThis",
+            "x-displayName": "What is Winstore Images",
+            "description": "Winstore Images API is an API (Application Programming Interface) for getting images from specific ftp users.\n\nThere are endpoints for creating, deleting or getting ftp users."
+        },
+        {
+            "name": "GettingStarted",
+            "x-displayName": "Getting Started",
+            "description": "With this API endpoints you can manage the user accounts. This REST API only works with JSON. Below is an example of the base url:\n\n```\nhttp://winstore-image.v150.mintyserver.nl\n```\nThe base url may change in the future."
+        },
+        {
+            "name": "Authentication",
+            "description": "At its current state our API only supports Basic Authentication. This token must be sent in the `Authorization` header when making requests to protected resources:\n\n```\nAuthorization: Basic <token>\n```"
+        },
+        {
+            "name": "Images",
+            "description": "There only is ```1``` endpoint at the moment for getting images."
+        },
+        {
+            "name": "FtpUsers",
+            "description": "There are endpoints for creating, deleting or getting ftp users.",
+            "x-displayName": "FTP Users"
+        }
+    ],
+    "x-tagGroups": [
+        {
+            "name": "Introduction",
+            "tags": [
+                "WhatIsThis",
+                "GettingStarted",
+                "Authentication"
+            ]
+        },
+        {
+            "name": "Endpoints",
+            "tags": [
+                "Images",
+                "FtpUsers"
+            ]
+        }
+    ]
+}
