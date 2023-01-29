@@ -28,3 +28,15 @@ export interface InfoXLogo {
     readonly altText?: string;
     readonly href?: string;
 }
+
+export interface Server {
+    readonly url: string;
+    readonly description?: string;
+    readonly variables?: ServerVariable[];
+}
+
+export interface ServerVariable {
+    readonly default: string;
+    readonly description?: string;
+    readonly enum?: string[];
+}
