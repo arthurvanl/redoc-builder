@@ -32,11 +32,12 @@ export interface InfoXLogo {
 export interface Server {
     readonly url: string;
     readonly description?: string;
-    readonly variables?: ServerVariable[];
+    readonly variables: ServerVariable[];
 }
 
 export interface ServerVariable {
+    readonly name: string;
     readonly default: string;
     readonly description?: string;
-    readonly enum?: string[];
+    readonly enum: string[];
 }
