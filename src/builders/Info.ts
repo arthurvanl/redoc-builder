@@ -23,7 +23,7 @@ export class InfoBuilder implements Info {
 
     public setVersion(version: string) {
 
-        Reflect.set(this, 'title', version);
+        Reflect.set(this, 'version', version);
         return this;
     }
 
