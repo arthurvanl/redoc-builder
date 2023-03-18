@@ -23,7 +23,7 @@ export interface InfoLicense {
 }
 
 export interface InfoXLogo {
-    readonly url?: string;
+    readonly name?: string;
     readonly backgroundColor?: string;
     readonly altText?: string;
     readonly href?: string;
@@ -79,4 +79,10 @@ export interface Content {
     readonly example?: any;
     readonly examples?: any;
     // encoding?: not going to use this property yet...
+}
+
+export interface RequestBody {
+    readonly description?: string;
+    readonly content: Content[];
+    readonly required?: boolean;
 }
