@@ -89,7 +89,7 @@ export class SchemaBuilder implements Schema {
                     ...properties,
                     [property['name']]: {
                         ...obj,
-                        type: property.propertyType,
+                        type: property.type,
                     }
                 }
             },
@@ -101,7 +101,7 @@ export class SchemaBuilder implements Schema {
 }
 
 export class SchemaPropertyBuilder implements SchemaProperty {
-    readonly propertyType!: SchemaType;
+    readonly type!: SchemaType;
     readonly name!: string;
     readonly description?: string;
     readonly title?: string;
@@ -122,9 +122,9 @@ export class SchemaPropertyBuilder implements SchemaProperty {
         Object.assign(this, data)
     }
 
-    public setPropertyType(propertyType: SchemaType) {
+    public setType(propertyType: SchemaType) {
         
-        Reflect.set(this, 'propertyType', propertyType);
+        Reflect.set(this, 'type', propertyType);
         return this;
     }
 

@@ -56,7 +56,7 @@ export type Schema = {
 };
 
 export type SchemaProperty = {
-    readonly propertyType: SchemaType;
+    readonly type: SchemaType;
     readonly name: string;
     readonly description?: string;
     readonly title?: string;
