@@ -72,3 +72,11 @@ export type SchemaProperty = {
     readonly example?: any;
     readonly deprecated?: boolean;
 }
+
+export interface Content {
+    readonly name: string;
+    readonly schema: SchemaBuilder;
+    readonly example?: any;
+    readonly examples?: any;
+    // encoding?: not going to use this property yet...
+}
