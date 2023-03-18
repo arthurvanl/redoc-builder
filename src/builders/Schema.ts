@@ -71,6 +71,20 @@ export class SchemaBuilder implements Schema {
     public toJSON() {
         const obj: any = {name: this.name, type: this.type};
 
+        // only adding when type isn't undefined
+        
+        if(this.ref !== undefined) {
+            obj.ref = this.ref;
+        }
+
+        if(this.required !== undefined) {
+            obj.required = this.required
+        }
+
+        if(this.example !== undefined) {
+            obj.example = this.example;
+        }
+
         if (this.type === 'array') {
             obj.items = this.items
         } else if (this.type === 'object') {
@@ -78,7 +92,7 @@ export class SchemaBuilder implements Schema {
                 let {propertyType: _, name: __, ...obj}: any = property
 
                 for(const prop in obj) {
-
+                    
                     // removing falsey values & empty arrays
                     if(obj[prop] === undefined || (Array.isArray(obj[prop]) && obj[prop].length == 0)) {
                         delete obj[prop]
