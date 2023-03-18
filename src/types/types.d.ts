@@ -23,7 +23,7 @@ export interface InfoLicense {
 }
 
 export interface InfoXLogo {
-    readonly name?: string;
+    readonly url?: string;
     readonly backgroundColor?: string;
     readonly altText?: string;
     readonly href?: string;
