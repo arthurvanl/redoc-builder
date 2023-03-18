@@ -137,7 +137,7 @@ export class InfoLicenseBuilder implements InfoLicense {
 }
 
 export class InfoXLogoBuilder implements InfoXLogo {
-    public readonly name?: string;
+    public readonly url?: string;
     public readonly backgroundColor?: string;
     public readonly altText?: string;
     public readonly href?: string;
@@ -147,9 +147,9 @@ export class InfoXLogoBuilder implements InfoXLogo {
         Object.assign(this, data);
     }
 
-    public setName(name: string) {
+    public setUrl(url: string) {
 
-        Reflect.set(this, 'name', name);
+        Reflect.set(this, 'url', url);
         return this;
     }
 
