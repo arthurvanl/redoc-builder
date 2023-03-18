@@ -7,6 +7,7 @@ describe('Schema test builder', () => {
         const schema = new SchemaBuilder()
             .setName('Test')
             .setType('object')
+            .setRef('#/components/test')
             .addProperty(
                 new SchemaPropertyBuilder()
                     .setDeprecated(true)
@@ -30,6 +31,7 @@ describe('Schema test builder', () => {
             {
                 name: 'Test',
                 type: 'object',
+                ref: '#/components/test',
                 properties: {
                     test: {
                         format: 'binary',
