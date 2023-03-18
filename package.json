@@ -7,7 +7,8 @@
     "dev": "npx ts-node-esm src/app.ts",
     "build": "npx tsc",
     "lint": "eslint src/**/**/*.ts --fix --ext .ts",
-    "prettier": "prettier --config .prettierrc --write src/**/**/*.ts"
+    "prettier": "prettier --config .prettierrc --write src/**/**/*.ts",
+    "test": "npx vitest"
   },
   "devDependencies": {
     "@types/node": "^18.11.14",
