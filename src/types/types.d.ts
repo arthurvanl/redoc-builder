@@ -86,3 +86,16 @@ export interface RequestBody {
     readonly content: Content[];
     readonly required?: boolean;
 }
+
+export type ParameterIn = "query" | "header" | "path" | "cookie";
+export type ParameterStyle = 'form' | 'simple' | 'label' | 'matrix' | 'spaceDelimited' | 'pipeDelimited' | 'deepObject';
+
+export type Parameter = {
+    readonly in: ParameterIn;
+    readonly allowEmptyValue?: boolean;
+    readonly style?: ParameterStyle;
+    readonly explode?: boolean;
+    readonly allowReserved?: boolean;
+    readonly schema?: SchemaBuilder;
+    readonly content: Content[];
+} & Omit<SchemaProperty, "type" | "title" | "format" | "maxLength" | "minLength" | "pattern" | "readOnly" | "writeOnly">
