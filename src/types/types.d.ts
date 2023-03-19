@@ -101,3 +101,21 @@ export type Parameter = {
     readonly examples?: any;
     readonly required?: boolean;
 } & Omit<SchemaProperty, "type" | "title" | "format" | "maxLength" | "minLength" | "pattern" | "readOnly" | "writeOnly">
+
+export type ComponentResponse = {
+    readonly name: string;
+    readonly description: string;
+    /**
+     * @todo NOT FULLY IMPLEMENTED YET
+     * @link https://redocly.com/docs/openapi-visual-reference/header/
+     */
+    readonly headers?: any; 
+    readonly content: Content[];
+    /**
+     * @todo NOT IMPLEMENTED YET
+     * @link https://redocly.com/docs/openapi-visual-reference/links/
+     */
+    readonly links?: any;
+}
+
+export type PathMethod = "get" | "post" | "put" | "delete" | "options" | "head" | "patch" | "trace";
