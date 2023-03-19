@@ -31,7 +31,7 @@ describe('Schema test builder', () => {
             {
                 name: 'Test',
                 type: 'object',
-                ref: '#/components/test',
+                $ref: '#/components/test',
                 properties: {
                     test: {
                         format: 'binary',

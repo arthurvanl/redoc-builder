@@ -41,7 +41,7 @@ describe('ComponentResponse test builder', () => {
                     schema: {
                         name: 'user',
                         type: 'object',
-                        ref: '#/components/responses/user/post',
+                        $ref: '#/components/responses/user/post',
                         properties: {
                             name: {
                                 type: 'string',
