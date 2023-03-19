@@ -58,8 +58,9 @@ export class SchemaBuilder implements Schema {
      * @param ref - The ref for the items
      */
     public setItems(ref: string) {
-        
-        this.items.ref = ref;
+
+        this.items ? this.items.ref = ref : Reflect.set(this, 'items', {ref});
+
         return this;
     }
 
@@ -77,7 +78,7 @@ export class SchemaBuilder implements Schema {
         // only adding when type isn't undefined
         
         if(this.ref !== undefined) {
-            obj.ref = this.ref;
+            obj.$ref = this.ref;
         }
 
         if(this.required !== undefined) {
@@ -89,7 +90,7 @@ export class SchemaBuilder implements Schema {
         }
 
         if (this.type === 'array') {
-            obj.items = this.items
+            obj.items = { $ref: this.items.ref };
         } else if (this.type === 'object') {
             obj.properties = this.properties.reduce((properties, property) => {
                 let {propertyType: _, name: __, ...obj}: any = property
