@@ -213,3 +213,8 @@ export interface Tag {
     readonly 'x-displayName'?: string;
     readonly externalDocs?: ExternalDocs;
 }
+
+export interface TagGroup {
+    readonly name: string;
+    readonly tags: Tag['name'][];
+}
