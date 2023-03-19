@@ -206,3 +206,10 @@ export interface SecurityScheme {
     readonly openIdConnectUrl?: string;
     readonly xLinkTo?: string;
 }
+
+export interface Tag {
+    readonly name: string;
+    readonly description: string;
+    readonly 'x-displayName'?: string;
+    readonly externalDocs?: ExternalDocs;
+}
