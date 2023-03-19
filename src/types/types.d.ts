@@ -186,3 +186,23 @@ export interface ExternalDocs {
     readonly url: string;
     readonly description?: string;
 }
+
+export type SecuritySchemeType = "apiKey" | "http" | "oauth2" | "openIdConnect";
+export interface SecurityScheme {
+    readonly securityName: string;
+    readonly type: SecuritySchemeType;
+    readonly description?: string;
+    readonly name: string;
+    readonly in: Omit<ParameterIn, "path">;
+    readonly scheme: string;
+    readonly bearerFormat?: string;
+    /**
+     * @todo NOT IMPLEMENTED
+     * @description
+     * not using it atm nor in the future
+     * @link https://redocly.com/docs/openapi-visual-reference/oauth-flows/
+     */
+    readonly flows?: any;
+    readonly openIdConnectUrl?: string;
+    readonly xLinkTo?: string;
+}
