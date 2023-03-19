@@ -98,4 +98,6 @@ export type Parameter = {
     readonly allowReserved?: boolean;
     readonly schema?: SchemaBuilder;
     readonly content: Content[];
+    readonly examples?: any;
+    readonly required?: boolean;
 } & Omit<SchemaProperty, "type" | "title" | "format" | "maxLength" | "minLength" | "pattern" | "readOnly" | "writeOnly">
