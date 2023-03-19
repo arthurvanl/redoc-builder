@@ -102,7 +102,7 @@ export type Parameter = {
     readonly required?: boolean;
 } & Omit<SchemaProperty, "type" | "title" | "format" | "maxLength" | "minLength" | "pattern" | "readOnly" | "writeOnly">
 
-export type ComponentResponse = {
+export interface ComponentResponse {
     readonly name: string;
     readonly description: string;
     /**
