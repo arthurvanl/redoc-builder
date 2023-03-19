@@ -16,6 +16,9 @@ export class SchemaBuilder implements Schema {
 
     /**
      * Sets the name of the scheme
+     * 
+     * Schema name is used for schema components
+     * 
      * @param name - The name of the scheme
      */
     public setName(name: string) {
