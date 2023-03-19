@@ -1,3 +1,6 @@
+import { RequestBodyBuilder } from "../builders/RequestBody.js";
+import { SchemaBuilder } from "../builders/Schema.js";
+
 export interface Info {
     readonly title: string;
     readonly version: string
@@ -119,3 +122,67 @@ export interface ComponentResponse {
 }
 
 export type PathMethod = "get" | "post" | "put" | "delete" | "options" | "head" | "patch" | "trace";
+
+export interface PathItem {
+    readonly path: string;
+    /**
+     * @argument - This will not be used since we're using the pathbuilder inside endpoints
+     */
+    readonly '$ref'?: string; 
+    readonly summary: string;
+    readonly description: string;
+    readonly get?: PathOperation;
+    readonly post?: PathOperation;
+    readonly put?: PathOperation;
+    readonly delete?: PathOperation;
+    readonly options?: PathOperation;
+    readonly head?: PathOperation;
+    readonly patch?: PathOperation;
+    readonly trace?: PathOperation;
+    /**
+     * @todo NOT IMPLEMENTED
+     * @description
+     * We're using servers globally and not per path item
+     * @link https://redocly.com/docs/openapi-visual-reference/servers/
+     */
+    readonly servers?: any;
+    readonly parameters: Parameter[];
+}
+
+export interface PathOperation {
+    readonly tags: string[];
+    readonly type: PathMethod;
+    readonly summary: string;
+    readonly description: string;
+    readonly operationId: string;
+    readonly externalDocs?: ExternalDocs;
+    readonly parameters: Parameter[];
+    readonly requestBody?: RequestBodyBuilder;
+    readonly responses: ComponentResponse[];
+    /**
+     * @todo NOT IMPLEMENTED YET
+     * @link https://redocly.com/docs/openapi-visual-reference/callbacks/
+     */
+    readonly callback?: any;
+    readonly deprecated?: boolean;
+    /**
+     * @todo NOT IMPLEMENTED
+     * @description
+     * We're using security schemes only once in every docs. 
+     * This won't implemented since we don't really need it.
+     * @link https://redocly.com/docs/openapi-visual-reference/security/
+     */
+    readonly security?: any;
+    /**
+     * @todo NOT IMPLEMENTED
+     * @description
+     * We're using servers globally and not per path item
+     * @link https://redocly.com/docs/openapi-visual-reference/servers/
+     */
+    readonly servers?: any;
+}
+
+export interface ExternalDocs {
+    readonly url: string;
+    readonly description?: string;
+}
