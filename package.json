@@ -1,8 +1,10 @@
 {
-  "name": "dc-bot",
+  "name": "redoc-builder",
+  "version": "1.0.3",
+  "description": "A powerful tool for building OpenAPI documentation. This will allow you to build a single page documentation for your API. All endpoints or paths can be added to the documentation by using the builders provided by this package.",  
   "module": "lib/index.js",
   "type": "module",
-  "files": ["lib", "types", "!lib/**/*.map", "!lib/**/*.ts", "lib/index.d.ts"],
+  "files": ["lib", "src/types", "!lib/**/*.map", "!lib/**/*.ts", "lib/index.d.ts"],
   "scripts": {
     "format": "bun x prettier src --write",
     "format:check": "bun x prettier src --check",
@@ -10,6 +12,17 @@
     "test": "bun test",
     "test:watch": "bun test --watch"
   },
+  "bugs": {
+    "url": "https://github.com/arthurvanl/redoc-builder/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arthurvanl/redoc-builder.git"
+  },
+  "homepage": "https://github.com/arthurvanl/redoc-builder",
+  "keywords": [],
+  "author": "Arthur",
+  "license": "MIT",
   "devDependencies": {
     "bun-types": "latest",
     "@typescript-eslint/eslint-plugin": "^6.7.3",
