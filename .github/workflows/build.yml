@@ -1,0 +1,28 @@
+name: Build
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
+        sdk: [stable]
+        flavor: [release]
+    steps:
+      - name: 📥 Checkout
+        uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+      - name: 🟢 Use Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+            bun-version: latest
+      - name: 🗃️ Install dependencies
+        run: bun install
+      - name: ✅ Build script
+        run: bun run build
+      - name: 🧪 Tests
+        run: bun run test

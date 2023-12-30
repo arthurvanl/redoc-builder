@@ -1,0 +1,62 @@
+# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+on:
+  release:
+    types: [created]
+jobs: 
+  check:
+    name: ✅ Check
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
+        sdk: [stable]
+        flavor: [release]
+    steps:
+      - name: 📥 Checkout
+        uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+      - name: 🟢 Use Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+            bun-version: latest
+      - name: 🗃️ Install dependencies
+        run: bun install
+      - name: ✅ Build script
+        run: bun run build
+      - name: 🧪 Tests
+        run: bun run test
+  release:
+    name: 🚀 Publish
+    needs: check
+    runs-on: ubuntu-latest
+    strategy:
+        fail-fast: false
+        matrix: 
+          os: [ubuntu-latest]
+          node-version: [20.6.x]
+    steps: 
+      - name: 📥 Checkout
+        uses: actions/checkout@v3
+      - name: 🟢 Use Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+            bun-version: latest
+      - name: 🟢 Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          registry-url: https://registry.npmjs.org
+      - name: 📦 Install dependencies
+        run: bun install
+      - name: 📝 Lint
+        run: bun run format:check
+      - name: ✅ Build script
+        run: bun run build
+      - name: 🚀 Publish
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
