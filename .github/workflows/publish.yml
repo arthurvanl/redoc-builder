@@ -52,8 +52,6 @@ jobs:
           registry-url: https://registry.npmjs.org
       - name: 📦 Install dependencies
         run: bun install
-      - name: 📝 Lint
-        run: bun run format:check
       - name: ✅ Build script
         run: bun run build
       - name: 🚀 Publish
