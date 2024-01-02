@@ -1,5 +1,11 @@
 # redoc-builder
 
+## 1.1.0
+
+### Minor Changes
+
+-   d1e24d4: add readme & add ci name
+
 ## 1.0.8
 
 ### Patch Changes
