@@ -1,5 +1,11 @@
 # redoc-builder
 
+## 1.0.6
+
+### Patch Changes
+
+-   e030849: add correct declaration file
+
 ## 1.0.5
 
 ### Patch Changes
