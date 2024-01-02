@@ -1,5 +1,11 @@
 # redoc-builder
 
+## 1.0.8
+
+### Patch Changes
+
+-   ff803e6: remove old build script
+
 ## 1.0.7
 
 ### Patch Changes
