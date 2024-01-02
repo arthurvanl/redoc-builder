@@ -8,17 +8,17 @@
   "type": "module",
   "private": false,
   "files": [
-    "lib",
+    "dist",
     "src/types",
-    "!lib/**/*.map",
-    "!lib/**/*.ts",
-    "lib/index.d.ts"
+    "!dist/**/*.map",
+    "!dist/**/*.ts",
+    "dist/index.d.ts"
   ],
   "scripts": {
     "format": "bun x prettier src --write",
     "format:check": "bun x prettier src --check",
     "lint": "tsc",
-    "build:test": "tsup src/index.ts --format cjs,esm --dts",
+    "build:test": "tsup",
     "build": "bun build src/index.ts --outdir lib --target=bun",
     "test": "bun test",
     "test:watch": "bun test --watch",
