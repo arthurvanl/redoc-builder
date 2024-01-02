@@ -2,8 +2,9 @@
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
 on:
-  release:
-    types: [created]
+  push: 
+    branches: 
+      - master
 jobs: 
   check:
     name: ✅ Check
@@ -55,6 +56,10 @@ jobs:
       - name: ✅ Build script
         run: bun run build
       - name: 🚀 Publish
-        run: npm publish
+        id: changesets
+        uses: changesets/action@v1
+        with:
+          publish: bun run release
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
