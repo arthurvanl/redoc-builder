@@ -1,5 +1,5 @@
-import { RedocUtils } from "@/builders/utils";
-import { Info, InfoContact, InfoLicense, InfoLogo } from "@/types";
+import { RedocUtils } from "./utils";
+import { Info, InfoContact, InfoLicense, InfoLogo } from "../types";
 
 export class InfoBuilder extends RedocUtils implements Info {
     readonly title!: string;

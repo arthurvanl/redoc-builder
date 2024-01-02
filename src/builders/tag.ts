@@ -1,5 +1,5 @@
-import { RedocUtils } from "@/builders/utils";
-import { Tag } from "@/types";
+import { RedocUtils } from "./utils";
+import { Tag } from "../types";
 
 export class TagBuilder extends RedocUtils implements Tag {
     readonly name!: string;

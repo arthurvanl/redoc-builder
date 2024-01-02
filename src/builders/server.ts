@@ -1,5 +1,5 @@
-import { RedocUtils } from "@/builders/utils";
-import { Server } from "@/types";
+import { RedocUtils } from "./utils";
+import { Server } from "../types";
 
 export class ServerBuilder extends RedocUtils implements Server {
     readonly url!: string;

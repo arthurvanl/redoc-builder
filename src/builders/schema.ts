@@ -1,6 +1,6 @@
-import { PropertyBuilder } from "@/builders/property";
-import { RedocUtils } from "@/builders/utils";
-import { SchemaObject, SchemaType, SchemaProperty, SchemaString, SchemaPropertyFormatType, SchemaReference, Reference, SchemaSecurity, SchemaSecurityStyle, ParameterIn } from "@/types";
+import { PropertyBuilder } from "./property";
+import { RedocUtils } from "./utils";
+import { SchemaObject, SchemaType, SchemaProperty, SchemaString, SchemaPropertyFormatType, SchemaReference, Reference, SchemaSecurity, SchemaSecurityStyle, ParameterIn } from "../types";
 
 export class SchemaObjectBuilder extends RedocUtils implements SchemaObject {
     readonly key_name!: string;

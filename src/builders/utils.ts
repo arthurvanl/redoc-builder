@@ -1,4 +1,4 @@
-import { Check, DefinitionKind, RemoveFunctions, SchemaObject, SchemaProperty, SchemaPropertyFormatType, SchemaPropertyType, SchemaType } from "@/types";
+import { Check, DefinitionKind, RemoveFunctions, SchemaObject, SchemaProperty, SchemaPropertyFormatType, SchemaPropertyType, SchemaType } from "../types";
 import { Writeable, z, ZodString, ZodNumber, ZodDate, ZodArray, ZodEffects, ZodEnum } from "zod";
 
 export class RedocUtils {

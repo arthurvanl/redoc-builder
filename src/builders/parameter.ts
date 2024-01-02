@@ -1,6 +1,6 @@
-import { SchemaObjectBuilder, SchemaStringBuilder, SchemaSecurityBuilder, SchemaReferenceBuilder } from "@/builders/schema";
-import { RedocUtils } from "@/builders/utils";
-import { Parameter, ParameterIn, ParameterStyle, Reference, Schema, SchemaType, SchemaBuilderType } from "@/types";
+import { SchemaObjectBuilder, SchemaStringBuilder, SchemaSecurityBuilder, SchemaReferenceBuilder } from "../builders/schema";
+import { RedocUtils } from "./utils";
+import { Parameter, ParameterIn, ParameterStyle, Reference, Schema, SchemaType, SchemaBuilderType } from "../types";
 
 export class ParameterBuilder extends RedocUtils implements Parameter {
     readonly in!: ParameterIn;

@@ -1,9 +1,9 @@
-import { InfoBuilder } from "@/builders/info";
-import { PathBuilder } from "@/builders/path";
-import { SchemaObjectBuilder, SchemaStringBuilder, SchemaSecurityBuilder, SchemaReferenceBuilder } from "@/builders/schema";
-import { ServerBuilder } from "@/builders/server";
-import { TagBuilder } from "@/builders/tag";
-import { Info, Tag, TagGroup, Server, Path, Schema, SchemaType, SchemaBuilderType, SchemaSecurity, SchemaObject } from "@/types";
+import { InfoBuilder } from "./info";
+import { PathBuilder } from "./path";
+import { SchemaObjectBuilder, SchemaStringBuilder, SchemaSecurityBuilder, SchemaReferenceBuilder } from "./schema";
+import { ServerBuilder } from "./server";
+import { TagBuilder } from "./tag";
+import { Info, Tag, TagGroup, Server, Path, Schema, SchemaType, SchemaBuilderType, SchemaSecurity, SchemaObject } from "../types";
 
 export class RedocBuilder {
     readonly openapi!: string;

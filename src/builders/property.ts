@@ -1,5 +1,5 @@
-import { RedocUtils } from "@/builders/utils";
-import { SchemaProperty, SchemaPropertyType, SchemaPropertyFormatType } from "@/types";
+import { RedocUtils } from "./utils";
+import { SchemaProperty, SchemaPropertyType, SchemaPropertyFormatType } from "../types";
 
 export class PropertyBuilder extends RedocUtils implements SchemaProperty {
     readonly name!: string;

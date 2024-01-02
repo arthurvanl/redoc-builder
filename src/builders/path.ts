@@ -1,8 +1,8 @@
-import { ParameterBuilder } from "@/builders/parameter";
-import { RequestBodyBuilder } from "@/builders/request_body";
-import { ResponseBuilder } from "@/builders/response";
-import { RedocUtils } from "@/builders/utils";
-import { Parameter, Path, PathOperation, PathOperationType, RequestBody, Response } from "@/types";
+import { ParameterBuilder } from "./parameter";
+import { RequestBodyBuilder } from "./request_body";
+import { ResponseBuilder } from "./response";
+import { RedocUtils } from "./utils";
+import { Parameter, Path, PathOperation, PathOperationType, RequestBody, Response } from "../types";
 
 export class PathBuilder extends RedocUtils implements Path {
     readonly path!: `/${string}`;

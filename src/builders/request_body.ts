@@ -1,6 +1,6 @@
-import { SchemaObjectBuilder, SchemaStringBuilder, SchemaSecurityBuilder, SchemaReferenceBuilder } from "@/builders/schema";
-import { RedocUtils } from "@/builders/utils";
-import { RequestBody, Schema, SchemaType, SchemaBuilderType } from "@/types";
+import { SchemaObjectBuilder, SchemaStringBuilder, SchemaSecurityBuilder, SchemaReferenceBuilder } from "./schema";
+import { RedocUtils } from "./utils";
+import { RequestBody, Schema, SchemaType, SchemaBuilderType } from "../types";
 
 export class RequestBodyBuilder extends RedocUtils implements RequestBody {
     readonly description!: string;

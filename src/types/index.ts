@@ -1,4 +1,4 @@
-import { SchemaObjectBuilder, SchemaReferenceBuilder, SchemaSecurityBuilder, SchemaStringBuilder } from "@/builders/schema";
+import { SchemaObjectBuilder, SchemaReferenceBuilder, SchemaSecurityBuilder, SchemaStringBuilder } from "../builders/schema";
 
 export type Info = Readonly<{
     title: string;

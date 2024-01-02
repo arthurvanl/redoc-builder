@@ -1,4 +1,4 @@
-import { RequestBodyBuilder } from "@/builders/request_body";
+import { RequestBodyBuilder } from "./request_body";
 
 export class ResponseBuilder extends RequestBodyBuilder {
     readonly code!: string
