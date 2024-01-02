@@ -1,5 +1,11 @@
 # redoc-builder
 
+## 1.0.7
+
+### Patch Changes
+
+-   2e9bb44: add poop code
+
 ## 1.0.6
 
 ### Patch Changes
