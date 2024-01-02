@@ -9,10 +9,10 @@
   "private": false,
   "files": [
     "dist",
-    "src/types",
     "!dist/**/*.map",
     "!dist/**/*.ts",
-    "dist/index.d.ts"
+    "dist/index.d.ts",
+    "dist/utils-HmX4SeL7.d.ts"
   ],
   "scripts": {
     "format": "bun x prettier src --write",
