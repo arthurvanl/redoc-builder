@@ -1,5 +1,11 @@
 # redoc-builder
 
+## 1.1.2
+
+### Patch Changes
+
+-   ca4bf94: fix: boolean check array can be empty
+
 ## 1.1.1
 
 ### Patch Changes
