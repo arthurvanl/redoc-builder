@@ -1,5 +1,11 @@
 # redoc-builder
 
+## 1.1.1
+
+### Patch Changes
+
+-   6ff1503: hotfix: add zod boolean
+
 ## 1.1.0
 
 ### Minor Changes
