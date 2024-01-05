@@ -119,7 +119,7 @@ export class RedocUtils {
             }
         }
     
-        const checks: Check[] = def.checks;
+        const checks: Check[] = def.checks ?? [];
         for(const check of checks) {
     
             switch(check.kind) {
