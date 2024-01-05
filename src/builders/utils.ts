@@ -1,5 +1,5 @@
 import { Check, DefinitionKind, RemoveFunctions, SchemaObject, SchemaProperty, SchemaPropertyFormatType, SchemaPropertyType, SchemaType } from "../types";
-import { Writeable, z, ZodString, ZodNumber, ZodDate, ZodArray, ZodEffects, ZodEnum } from "zod";
+import { Writeable, z, ZodString, ZodNumber, ZodDate, ZodArray, ZodEffects, ZodEnum, ZodBoolean } from "zod";
 
 export class RedocUtils {
 
@@ -251,6 +251,8 @@ export class RedocUtils {
                 return {type: SchemaPropertyType.String, isEffect: true }
             case ZodEnum.name:
                 return {type: SchemaPropertyType.Array}
+            case ZodBoolean.name:
+                return {type: SchemaPropertyType.Boolean}
             default:
                 throw new Error("Shouldn't be here")
         }
