@@ -106,6 +106,7 @@ export class RedocUtils {
         }
     
         if(type === SchemaPropertyType.Array) {
+
             if(def.typeName === ZodEnum.name || def.typeName === ZodNativeEnum.name) {
                 property.enum = def.typeName === ZodEnum.name ? def.values as any[] : this.enumToArray(def.values)
                 property.type = typeof property.enum[0] as SchemaPropertyType;
@@ -210,10 +211,10 @@ export class RedocUtils {
             if(!schema.shape[key]._def.innerType) {
                 required.push(key);
             }
-                
-            let type = this.parsePropertyType(this.findPropertyType(schema.shape[key]));
-            let def = schema.shape[key]._def.innerType ? schema.shape[key]._def.innerType._def : schema.shape[key]._def
-    
+            
+            let def = this.findCorrectDef(schema.shape[key])
+            let type = this.parsePropertyType(def.typeName);
+
             if(type.type === SchemaPropertyType.Array) {
                 let checks: Check[] = []
                 if(def.exactLength) {
@@ -228,7 +229,7 @@ export class RedocUtils {
     
                 def.checks = checks;
             }
-
+            
             const definition = this.getDefinitions(def, key, type.type, type.isDate, type.isEffect);
             properties.push(definition);
     
@@ -237,13 +238,12 @@ export class RedocUtils {
         return { key_name: name, properties, required, type: SchemaType.Object }
     }
 
-    private findPropertyType(shape: any) {
+    private findCorrectDef(shape: any) {
         let def = shape._def;
         while(def.innerType) {
-            def = def.innerType._def
+            def = def.innerType._def;
         }
-
-        return def.typeName as string;
+        return def;
     }
 
     private parsePropertyType(type: string): {type: SchemaPropertyType, isDate?: true, isEffect?: true} {
