@@ -1,5 +1,11 @@
 # redoc-builder
 
+## 1.1.3
+
+### Patch Changes
+
+-   5d800dd: fix enumeration parser
+
 ## 1.1.2
 
 ### Patch Changes
