@@ -1,5 +1,5 @@
 import { Check, DefinitionKind, RemoveFunctions, SchemaObject, SchemaProperty, SchemaPropertyFormatType, SchemaPropertyType, SchemaType } from "../types";
-import { Writeable, z, ZodString, ZodNumber, ZodDate, ZodArray, ZodEffects, ZodEnum, ZodBoolean } from "zod";
+import { Writeable, z, ZodString, ZodNumber, ZodDate, ZodArray, ZodEffects, ZodEnum, ZodBoolean, ZodNativeEnum } from "zod";
 
 export class RedocUtils {
 
@@ -87,6 +87,7 @@ export class RedocUtils {
         }
         return data;
     }
+    
     private getDefinitions(def: any, key: string, type: SchemaPropertyType, isDate = false, isEffect = false): Writeable<Omit<SchemaProperty, | "title" | "example" | "deprecated" | "readOnly" | "writeOnly">> {
         
         let property: Writeable<Omit<SchemaProperty, | "title" | "example" | "deprecated" | "readOnly" | "writeOnly">> = {
@@ -105,9 +106,9 @@ export class RedocUtils {
         }
     
         if(type === SchemaPropertyType.Array) {
-            if(def.typeName === ZodEnum.name) {
-                property.array_type = typeof def.values[0] as Exclude<SchemaPropertyType, SchemaPropertyType.Array>;
-                property.enum = def.values;
+            if(def.typeName === ZodEnum.name || def.typeName === ZodNativeEnum.name) {
+                property.enum = def.typeName === ZodEnum.name ? def.values as any[] : this.enumToArray(def.values)
+                property.type = typeof property.enum[0] as SchemaPropertyType;
             } else {
                 const type = this.parsePropertyType(def.type._def.typeName).type
                 // TODO: in the future it should be allowed to be array or objects
@@ -209,7 +210,8 @@ export class RedocUtils {
             if(!schema.shape[key]._def.innerType) {
                 required.push(key);
             }
-            let type = this.parsePropertyType(schema.shape[key]._def.innerType ? schema.shape[key]._def.innerType._def.typeName : schema.shape[key]._def.typeName);
+                
+            let type = this.parsePropertyType(this.findPropertyType(schema.shape[key]));
             let def = schema.shape[key]._def.innerType ? schema.shape[key]._def.innerType._def : schema.shape[key]._def
     
             if(type.type === SchemaPropertyType.Array) {
@@ -226,6 +228,7 @@ export class RedocUtils {
     
                 def.checks = checks;
             }
+
             const definition = this.getDefinitions(def, key, type.type, type.isDate, type.isEffect);
             properties.push(definition);
     
@@ -234,8 +237,17 @@ export class RedocUtils {
         return { key_name: name, properties, required, type: SchemaType.Object }
     }
 
+    private findPropertyType(shape: any) {
+        let def = shape._def;
+        while(def.innerType) {
+            def = def.innerType._def
+        }
+
+        return def.typeName as string;
+    }
+
     private parsePropertyType(type: string): {type: SchemaPropertyType, isDate?: true, isEffect?: true} {
-       
+
         switch(type) {
 
             case ZodString.name:
@@ -250,11 +262,19 @@ export class RedocUtils {
                 //* default setting to String since we it's an effect we need to get the type differently.
                 return {type: SchemaPropertyType.String, isEffect: true }
             case ZodEnum.name:
+            case ZodNativeEnum.name:
                 return {type: SchemaPropertyType.Array}
             case ZodBoolean.name:
                 return {type: SchemaPropertyType.Boolean}
             default:
                 throw new Error("Shouldn't be here")
         }
+    }
+
+    private enumToArray(enumeration: any) {
+        return Object.keys(enumeration)
+        .filter(key => isNaN(Number(key)))
+        .map(key => enumeration[key])
+        .filter(val => typeof val === "number" || typeof val === "string");
     }
 }
