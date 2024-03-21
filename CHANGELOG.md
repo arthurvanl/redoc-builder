@@ -1,5 +1,11 @@
 # redoc-builder
 
+## 1.1.4
+
+### Patch Changes
+
+-   a9a5bab: fix for finding correct zod definition
+
 ## 1.1.3
 
 ### Patch Changes
