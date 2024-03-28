@@ -5,7 +5,7 @@ import { RequestBody, Schema, SchemaType, SchemaBuilderType } from "../types";
 export class RequestBodyBuilder extends RedocUtils implements RequestBody {
     readonly description!: string;
     readonly required?: boolean;
-    readonly schema: Schema & { readonly media_type: string; } = {} as Schema & { readonly media_type: string; } ;
+    readonly schema!: Schema & { readonly media_type: string; };
 
     public constructor(data?: RequestBody) {
         super()

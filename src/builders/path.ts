@@ -53,7 +53,7 @@ class PathOperationBuilder extends RedocUtils implements PathOperation {
     readonly summary!: string;
     readonly description!: string;
     readonly operationId!: string;
-    readonly request_body: RequestBody = {} as RequestBody;
+    readonly request_body!: RequestBody;
     readonly parameters: Parameter[] = []
     readonly responses: Response[] = [];
     readonly deprecated?: boolean;
@@ -104,6 +104,9 @@ class PathOperationBuilder extends RedocUtils implements PathOperation {
     public setRequestBody(request_body: RequestBodyBuilder | ((request_body: RequestBodyBuilder) => RequestBodyBuilder)) {
 
         const result = typeof request_body === 'function' ? request_body(new RequestBodyBuilder()) : request_body;
+        
+        if(!this.request_body) { Reflect.set(this, 'request_body', {}) }
+
         Reflect.set(this.request_body, 'schema', result.schema);
         Reflect.set(this.request_body, 'description', result.description);
         Reflect.set(this.request_body, 'required', result.required);
