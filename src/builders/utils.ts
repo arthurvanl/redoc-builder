@@ -241,7 +241,7 @@ export class RedocUtils {
     private findCorrectDef(shape: any) {
         let def = shape._def;
         while(def.innerType || def.schema) {
-            def = def.innerType ? def.innerType._def : def.schema._def.innerType;
+            def = def.innerType ? def.innerType._def : def.schema._def.schema ? def.schema._def.schema._def : def.schema._def.innerType;
         }
         return def;
     }
