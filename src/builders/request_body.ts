@@ -98,8 +98,7 @@ export class RequestBodyBuilder extends RedocUtils implements RequestBody {
 
         if (!this.schema) { return this.removeUndefinedKeys(obj) }
         if (!this.schema.type) { throw new Error("Schema type must be set when it's used!") }
-        if (!this.schema.media_type) { console.log(this);throw new Error("Media Type must be set for responses!")}
-
+        if (!this.schema.media_type) { Reflect.set(this.schema, "media_type", "application/json") }
         
         if (this.schema.type === SchemaType.Object) {
             obj.content[this.schema.media_type] = {schema: new SchemaObjectBuilder(this.schema).toJSON()};

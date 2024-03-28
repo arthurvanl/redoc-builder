@@ -89,11 +89,15 @@ export type SchemaBuilderType<Type extends SchemaType> =
     : never;
 
 export enum SchemaType {
+    /** Wether the schema is for a new schema (no reference) */
     Object = "object",
+    /** Wether the schema is for a string scheme */
     String = "string",
+    /** Wether the schema is for a security scheme */
     Security = "security",
+    /** Wether the schema is for an object */
     Reference = "reference",
-    //* for array items
+    /** Wether the schema is for an array */
     ItemReference = "item-reference"
 }
 
