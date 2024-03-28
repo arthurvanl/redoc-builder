@@ -1,5 +1,11 @@
 # redoc-builder
 
+## 1.1.7
+
+### Patch Changes
+
+-   26bc29b: types being exported correctly
+
 ## 1.1.6
 
 ### Patch Changes
