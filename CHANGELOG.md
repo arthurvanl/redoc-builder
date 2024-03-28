@@ -1,5 +1,11 @@
 # redoc-builder
 
+## 1.1.8
+
+### Patch Changes
+
+-   666de73: oke
+
 ## 1.1.7
 
 ### Patch Changes
