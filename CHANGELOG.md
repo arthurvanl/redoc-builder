@@ -1,5 +1,11 @@
 # redoc-builder
 
+## 1.1.6
+
+### Patch Changes
+
+-   2e830a0: fix for super refine properties not getting correct definition
+
 ## 1.1.5
 
 ### Patch Changes

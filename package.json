@@ -1,6 +1,6 @@
 {
   "name": "redoc-builder",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "description": "A powerful tool for building OpenAPI documentation. This will allow you to build a single page documentation for your API. All endpoints or paths can be added to the documentation by using the builders provided by this package.",
   "module": "./dist/index.js",
   "main": "./dist/index.mjs",
