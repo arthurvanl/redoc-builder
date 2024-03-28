@@ -1,5 +1,11 @@
 # redoc-builder
 
+## 1.1.9
+
+### Patch Changes
+
+-   9979c2c: TypeError: Reflect.set requires the first argument be an object
+
 ## 1.1.8
 
 ### Patch Changes
