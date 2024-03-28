@@ -1,5 +1,11 @@
 # redoc-builder
 
+## 1.1.5
+
+### Patch Changes
+
+-   750f2a0: fix ZodDefault parsing issue
+
 ## 1.1.4
 
 ### Patch Changes
