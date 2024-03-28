@@ -53,7 +53,7 @@ class PathOperationBuilder extends RedocUtils implements PathOperation {
     readonly summary!: string;
     readonly description!: string;
     readonly operationId!: string;
-    readonly request_body!: RequestBody;
+    readonly request_body: RequestBody = {} as RequestBody;
     readonly parameters: Parameter[] = []
     readonly responses: Response[] = [];
     readonly deprecated?: boolean;
