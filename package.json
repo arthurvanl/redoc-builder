@@ -7,13 +7,6 @@
   "types": "./dist/index.d.ts",
   "type": "module",
   "private": false,
-  "files": [
-    "dist",
-    "!dist/**/*.map",
-    "!dist/**/*.ts",
-    "dist/index.d.ts",
-    "dist/utils-HmX4SeL7.d.ts"
-  ],
   "scripts": {
     "format": "bun x prettier src --write",
     "format:check": "bun x prettier src --check",

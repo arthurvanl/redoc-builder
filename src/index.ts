@@ -10,4 +10,4 @@ export * from './builders/server'
 export * from './builders/tag'
 export * from './builders/utils'
 
-export * from './types/index'
+export * from './types'
