@@ -213,7 +213,7 @@ export class RedocUtils {
             }
             
             let def = this.findCorrectDef(schema.shape[key])
-            let type = this.parsePropertyType(def.typeName);
+            let type = this.parsePropertyType(def.typeName ?? def._def.typeName);
 
             if(type.type === SchemaPropertyType.Array) {
                 let checks: Check[] = []
@@ -240,8 +240,8 @@ export class RedocUtils {
 
     private findCorrectDef(shape: any) {
         let def = shape._def;
-        while(def.innerType) {
-            def = def.innerType._def;
+        while(def.innerType || def.schema) {
+            def = def.innerType ? def.innerType._def : def.schema._def.innerType;
         }
         return def;
     }
