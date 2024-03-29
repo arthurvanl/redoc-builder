@@ -57,22 +57,22 @@ export class RedocBuilder {
     public addSchema<Type extends SchemaType>(type: Type, schema: ((builder: SchemaBuilderType<Type>) => SchemaBuilderType<Type>)) {
 
         if(this.isSchema(schema, type as SchemaType.Object) && type === SchemaType.Object) {
-            Reflect.set(this, 'schema', schema(new SchemaObjectBuilder()))
+            this.schemas.push(schema(new SchemaObjectBuilder()))
             return this;
         }
 
         if(this.isSchema(schema, type as SchemaType.String) && type === SchemaType.String) {
-            Reflect.set(this, 'schema', schema(new SchemaStringBuilder()))
+            this.schemas.push(schema(new SchemaStringBuilder()))
             return this;
         }
 
         if(this.isSchema(schema, type as SchemaType.Security) && type === SchemaType.Security) {
-            Reflect.set(this, 'schema', schema(new SchemaSecurityBuilder()))
+            this.schemas.push(schema(new SchemaSecurityBuilder()))
             return this;
         }
 
         if(this.isSchema(schema, type as SchemaType.Reference) && (type === SchemaType.Reference || type === SchemaType.ItemReference)) {
-            Reflect.set(this, 'schema', schema(new SchemaReferenceBuilder()))
+            this.schemas.push(schema(new SchemaReferenceBuilder()))
             return this;
         }
 
