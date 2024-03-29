@@ -1,5 +1,11 @@
 # redoc-builder
 
+## 1.1.11
+
+### Patch Changes
+
+-   06911fd: fix addSchema feature
+
 ## 1.1.10
 
 ### Patch Changes
